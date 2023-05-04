@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+      table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+      }
+      
+      td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+      }
+      
+      tr:nth-child(even) {
+        background-color: #dddddd;
+      }
+      </style>
+      <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+</head>
+<body>
+
+<!-- views/users.ejs -->
+
+<table style="width: 100%;">
+  <thead>
+    <tr>
+      <th>number</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Password</th>
+      <th>Image</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% admin.forEach(function(user) { %>
+      <tr style="text-align: center;">
+        <th>1</th>
+        <td><%=user.name %></td>
+        <td><%=user.email %></td>
+        <td><%=user.password %></td>
+        <td><%=user.image[0].filename %></td>
+        <td>
+          <!-- <form action="/admin/user/delete/<%= user._id %>">
+            <button>Delete</button>
+          </form> -->
+          <a href="/admin/view/<%=user._id%>"><button>View</button></a>
+          <a href="/admin/edit/<%=user._id%>"><button>Edit</button></a>
+          <a href="/admin/user/delete/<%= user._id %>"><button>Delete</button></a>
+        </td>
+      </tr>
+    <% }); %>
+  </tbody>
+</table>
+<br>
+<div style="text-align: center;">
+<button>Pervious</button>
+<button>Next</button>
+</div>
+    
+</body>
+</html>

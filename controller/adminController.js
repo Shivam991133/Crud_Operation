@@ -8,7 +8,7 @@ const adminLogin = async (req, res) => {
             const user = await model.findOne({ userType: "ADMIN" });
             if (user) {
                 if (user.password == password) {
-                    res.render('./admin/adminDashboard');
+                    res.render('./admin/adminDashBoard');
                 } else {
                     res.send({ message: "Passowrd not Match" });
                 }
@@ -32,7 +32,7 @@ const deletedUser = async (req, res) => {
         const deletedUser = await model.findByIdAndDelete({ _id: req.params.id });
         if (deletedUser) {
             console.log(deletedUser)
-            res.redirect('http://localhost:3000/admin/view');
+            res.redirect('https://node-4auf.onrender.com/admin/view');
         } else {
             console.log('Data not deleted');
         }
@@ -59,9 +59,8 @@ const viewAllUser = async (req, res) => {
 const viewUserProfile = async(req,res)=>{
     try {
         const user = await model.findById(req.params.id);
-        console.log(user)
         if(user){
-            res.render('./admin/viewuserData',{data:user})
+            res.render('./user/viewProfile',{data:user})
 
         }else{
             res.send({message:"User Not Found"})

@@ -60,7 +60,7 @@ const viewUserProfile = async(req,res)=>{
     try {
         const user = await model.findById(req.params.id);
         if(user){
-            res.render('./user/ViewProfile',{data:user})
+            res.render('./user/userViewProfile',{data:user})
 
         }else{
             res.send({message:"User Not Found"})
